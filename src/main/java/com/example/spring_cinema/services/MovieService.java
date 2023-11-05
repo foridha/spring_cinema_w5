@@ -10,19 +10,20 @@ import java.util.List;
 @Service
 public class MovieService {
 
-        @Autowired
-        MovieRepository movieRepository;
+    @Autowired
+    MovieRepository movieRepository;
 
 
-
-public List<Movie> getAllMovies() {
-        return movieRepository.findAll();
-}
-
-public Movie addMovie(Movie movie){
+    public Movie addMovie(Movie movie) {
         return movieRepository.save(movie);
-}
- public void deleteMovie(Long id){
+    }
+
+    public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
- }
+    }
+
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id).orElse(null);
+    }
+
 }
